@@ -2,3 +2,7 @@
 .venv
 .idea
 .vscode
+allure-results
+.pytest_cache
+uv.lock
+__pycache__
