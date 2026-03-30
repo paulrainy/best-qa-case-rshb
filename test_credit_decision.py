@@ -4,12 +4,16 @@ import psycopg2
 import allure
 import os
 import math
+import dotenv
 
-# Конфигурация БД (можно переопределять из среды)
+# Load environment variables from .env file if it exists
+dotenv.load_dotenv()
+
+# Конфигурация БД (загружается из .env или системных переменных)
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = os.getenv("DB_PORT", "5433")
 DB_USER = os.getenv("DB_USER", "testuser")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "testpassword")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_NAME = os.getenv("DB_NAME", "creditdb")
 
 def get_db_connection():

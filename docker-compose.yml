@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:15-alpine
@@ -12,7 +10,7 @@ services:
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U testuser -d creditdb"]
+      test: [ "CMD-SHELL", "pg_isready -U testuser -d creditdb" ]
       interval: 2s
       timeout: 5s
       retries: 10
