@@ -1,0 +1,20 @@
+case_id,age,income,credit_history,employment,expected_result,comment
+1,25,60000,GOOD,EMPLOYED,APPROVE,Valid Base case
+2,20,60000,GOOD,EMPLOYED,APPROVE,Exception Rule 1 True
+3,20,40000,GOOD,EMPLOYED,REJECT,Exception Rule 1 False (Income low)
+4,20,60000,EMPTY,SELF_EMPLOYED,REJECT,Exception Rule 1 False (wrong employment)
+5,25,40000,BAD,EMPLOYED,REJECT,Rule 2: BAD history rejects
+6,20,60000,BAD,EMPLOYED,REJECT,Conflict Exception 1 vs Rule 2 - Assume Rule 2 (BAD history) wins
+7,25,60000,GOOD,UNEMPLOYED,REJECT,Rule 3: UNEMPLOYED rejects
+8,18,50001,GOOD,EMPLOYED,APPROVE,BVA: age 18 low bound exception 1
+9,20,50001,GOOD,EMPLOYED,APPROVE,BVA: age 20 upper bound exception 1
+10,21,10000,GOOD,EMPLOYED,APPROVE,BVA: age 21 base approve
+11,100,0,EMPTY,EMPLOYED,APPROVE,BVA: age 100 upper bound base approve
+12,17,60000,GOOD,EMPLOYED,VALIDATION_ERROR,BVA: Base invalid age < 18
+13,101,60000,GOOD,EMPLOYED,VALIDATION_ERROR,BVA: Base invalid age > 100
+14,25,-1,GOOD,EMPLOYED,VALIDATION_ERROR,BVA: Base invalid income < 0
+15,25,1000001,GOOD,EMPLOYED,VALIDATION_ERROR,BVA: Base invalid income > 1000000
+16,,60000,GOOD,EMPLOYED,VALIDATION_ERROR,Error Guessing: Missing Age
+17,25,,GOOD,EMPLOYED,VALIDATION_ERROR,Error Guessing: Missing Income
+18,25,60000,AWESOME,EMPLOYED,VALIDATION_ERROR,Error Guessing: Invalid enum history
+19,25,60000,GOOD,,VALIDATION_ERROR,Error Guessing: Missing employment
