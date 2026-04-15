@@ -7,3 +7,4 @@ allure-results
 uv.lock
 __pycache__
 .env
+~$*
